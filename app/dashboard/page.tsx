@@ -31,7 +31,7 @@ import { generateText, generateImage, generateCode } from "../../lib/hi-model"
 import { Badge } from "@/components/ui/badge"
 
 // Add Groq API key
-const GROQ_API_KEY = "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";
+const GROQ_API_KEY = process.env.GROQ_API_KEY;
 
 export default function Dashboard() {
   // Chat state
@@ -116,7 +116,7 @@ export default function Dashboard() {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            apiKey: "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",
+            apiKey: GROQ_API_KEY,
             prompt: chatPrompt,
           }),
         });
@@ -149,7 +149,7 @@ export default function Dashboard() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          apiKey: "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",
+          apiKey: GROQ_API_KEY,
           prompt: imagePrompt,
         }),
       });
@@ -174,7 +174,7 @@ export default function Dashboard() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          apiKey: "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",
+          apiKey: GROQ_API_KEY,
           prompt: codePrompt,
         }),
       });
@@ -199,7 +199,7 @@ export default function Dashboard() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          apiKey: "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",
+          apiKey: GROQ_API_KEY,
           prompt: researchPrompt,
         }),
       });
@@ -250,7 +250,7 @@ export default function Dashboard() {
       const res = await fetch("/api/groq-chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ apiKey:"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", prompt: groqPrompt }),
+        body: JSON.stringify({ apiKey: GROQ_API_KEY, prompt: groqPrompt }),
       });
       const data = await res.json();
       if (res.ok) {
@@ -274,7 +274,7 @@ export default function Dashboard() {
       const res = await fetch("/api/groq-chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ apiKey: "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", prompt: groqPrompt }),
+        body: JSON.stringify({ apiKey: GROQ_API_KEY, prompt: groqPrompt }),
       });
       const data = await res.json();
       if (data.response) setGroqResult(data.response);
